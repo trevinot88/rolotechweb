@@ -269,7 +269,7 @@
 
         .hero .container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr; /* Cambio a una sola columna */
             gap: 60px;
             align-items: center;
             position: relative;
@@ -278,6 +278,9 @@
 
         .hero-content {
             animation: fadeInUp 1s ease-out;
+            text-align: center; /* Centrar el contenido */
+            max-width: 800px; /* Ancho máximo para mejor lectura */
+            margin: 0 auto; /* Centrar el bloque */
         }
 
         .hero-badge {
@@ -321,7 +324,7 @@
             font-size: 1.15rem;
             color: var(--text-secondary);
             max-width: 520px;
-            margin-bottom: 40px;
+            margin: 0 auto 40px; /* Centrar */
             line-height: 1.8;
         }
 
@@ -329,6 +332,7 @@
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
+            justify-content: center; /* Centrar botones */
         }
 
         .btn {
@@ -375,6 +379,7 @@
             margin-top: 56px;
             padding-top: 32px;
             border-top: 1px solid var(--border);
+            justify-content: center; /* Centrar estadísticas */
         }
 
         .stat h3 {
@@ -395,7 +400,7 @@
         /* Hero Visual */
         .hero-visual {
             position: relative;
-            display: flex;
+            display: none; /* Oculto para evitar errores visuales */
             justify-content: center;
             align-items: center;
             animation: fadeInRight 1s ease-out 0.3s both;
@@ -1254,11 +1259,6 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .hero .container { grid-template-columns: 1fr; text-align: center; }
-            .hero-description { margin: 0 auto 40px; }
-            .hero-buttons { justify-content: center; }
-            .hero-stats { justify-content: center; }
-            .hero-visual { display: none; }
             .about-grid { grid-template-columns: 1fr; gap: 40px; }
             .contact-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
