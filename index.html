@@ -708,52 +708,70 @@
 
         /* ===== ABOUT / WHY US ===== */
         .about-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-stats-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 48px 0;
         }
 
-        .about-image {
-            position: relative;
-        }
-
-        .about-image-main {
-            width: 100%;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-card);
-        }
-
-        .about-image-badge {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
+        .about-stat-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-hover);
-            border-radius: var(--radius);
-            padding: 20px 28px;
-            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 32px 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .about-image-badge h4 {
-            font-size: 1.8rem;
+        .about-stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .about-stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .about-stat-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .about-stat-card h4 {
+            font-size: 2.5rem;
             font-weight: 800;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 8px;
         }
 
-        .about-image-badge p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        .about-stat-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         .about-features {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
             margin-top: 40px;
         }
 
@@ -761,29 +779,43 @@
             display: flex;
             gap: 16px;
             align-items: flex-start;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 24px 20px;
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .about-feature:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
         }
 
         .about-feature-icon {
-            min-width: 44px;
-            height: 44px;
-            border-radius: 10px;
+            min-width: 48px;
+            height: 48px;
+            border-radius: 12px;
             background: var(--primary-glow);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         .about-feature h4 {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            color: var(--text-primary);
         }
 
         .about-feature p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         /* ===== TECH STACK ===== */
@@ -1259,7 +1291,8 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-stats-row { grid-template-columns: 1fr; }
+            .about-features { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .process-grid { grid-template-columns: 1fr 1fr; }
@@ -1287,6 +1320,7 @@
             .nav-toggle { display: flex; z-index: 1001; }
             .portfolio-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
+            .about-stats-row { grid-template-columns: 1fr; }
             .about-features { grid-template-columns: 1fr; }
             .form-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
@@ -1633,46 +1667,53 @@
     <!-- ABOUT -->
     <section id="nosotros">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-image reveal">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&h=500&fit=crop" alt="Equipo RoloTech" class="about-image-main">
-                    <div class="about-image-badge">
+            <div class="about-grid reveal">
+                <span class="section-label"><i class="fas fa-users"></i> Nosotros</span>
+                <h2 class="section-title">Somos tu <span class="accent">socio tecnológico</span></h2>
+                <p class="section-subtitle" style="margin: 0 auto;">En RoloTech combinamos talento, pasión y las mejores prácticas de ingeniería de software para convertir desafíos complejos en soluciones elegantes.</p>
+                
+                <div class="about-stats-row reveal">
+                    <div class="about-stat-card">
                         <h4>5+</h4>
-                        <p>Certificaciones de IA</p>
+                        <p>Años de experiencia en desarrollo</p>
+                    </div>
+                    <div class="about-stat-card">
+                        <h4>100%</h4>
+                        <p>Proyectos entregados a tiempo</p>
+                    </div>
+                    <div class="about-stat-card">
+                        <h4>24/7</h4>
+                        <p>Soporte técnico continuo</p>
                     </div>
                 </div>
-                <div class="reveal">
-                    <span class="section-label"><i class="fas fa-users"></i> Nosotros</span>
-                    <h2 class="section-title">Somos tu <span class="accent">socio tecnológico</span></h2>
-                    <p class="section-subtitle">En RoloTech combinamos talento, pasión y las mejores prácticas de ingeniería de software para convertir desafíos complejos en soluciones elegantes.</p>
-                    <div class="about-features">
-                        <div class="about-feature">
-                            <div class="about-feature-icon"><i class="fas fa-code-branch"></i></div>
-                            <div>
-                                <h4>Metodologías Ágiles</h4>
-                                <p>Scrum, Kanban y entregas iterativas</p>
-                            </div>
+
+                <div class="about-features reveal">
+                    <div class="about-feature">
+                        <div class="about-feature-icon"><i class="fas fa-code-branch"></i></div>
+                        <div>
+                            <h4>Metodologías Ágiles</h4>
+                            <p>Scrum, Kanban y entregas iterativas para máxima flexibilidad</p>
                         </div>
-                        <div class="about-feature">
-                            <div class="about-feature-icon"><i class="fas fa-award"></i></div>
-                            <div>
-                                <h4>Código de Calidad</h4>
-                                <p>Clean code, testing, y code review</p>
-                            </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon"><i class="fas fa-award"></i></div>
+                        <div>
+                            <h4>Código de Calidad</h4>
+                            <p>Clean code, testing automatizado y code review exhaustivo</p>
                         </div>
-                        <div class="about-feature">
-                            <div class="about-feature-icon"><i class="fas fa-headset"></i></div>
-                            <div>
-                                <h4>Soporte 24/7</h4>
-                                <p>Acompañamiento post-lanzamiento</p>
-                            </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <h4>Soporte Continuo</h4>
+                            <p>Acompañamiento completo post-lanzamiento y mantenimiento</p>
                         </div>
-                        <div class="about-feature">
-                            <div class="about-feature-icon"><i class="fas fa-lock"></i></div>
-                            <div>
-                                <h4>Seguridad Primero</h4>
-                                <p>OWASP, cifrado y compliance</p>
-                            </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon"><i class="fas fa-lock"></i></div>
+                        <div>
+                            <h4>Seguridad Primero</h4>
+                            <p>Estándares OWASP, cifrado end-to-end y compliance total</p>
                         </div>
                     </div>
                 </div>
